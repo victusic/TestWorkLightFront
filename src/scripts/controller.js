@@ -9,7 +9,7 @@ $(document).ready( function(){
 	$('.add-task-save').bind('click', function(){
 		$(".add-task-text-plate").css("display", "none");
 		$(".add-task-button").css("display", "block");
-		$('.add-task-input').val().length > 24 ? alert("текст задачи не может превышать 24 символов") : addTask($('.add-task-input').val())
+		$('.add-task-input').val().length > 32 ? alert("текст задачи не может превышать 32 символов") : addTask($('.add-task-input').val())
 	});
 
 	//выполнение задачи
@@ -51,8 +51,13 @@ $(document).ready( function(){
 
 	    const newText = $item.find(".rename-task-input").val();
 
-	    {isChecked ? updateTask(taskId, newText, 1, 1) : updateTask(taskId, newText, 0, 1)}
-
+	    if (newText.length > 32) {
+	    	alert("текст задачи не может превышать 32 символов")
+	    }
+	    else{
+	    	{isChecked ? updateTask(taskId, newText, 1, 1) : updateTask(taskId, newText, 0, 1)}
+	    }
+	    
 	    $item.find(".table-task-text").css("display", "block");
 		$item.find(".rename-task-plate").css("display", "none");
 
